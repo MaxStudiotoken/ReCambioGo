@@ -4,8 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#ff5b16">
-  <meta name="description" content="ReCambioGo conecta a personas de todo el mundo para enviar y recibir piezas de segunda mano y devolver coches a la carretera.">
+  <meta name="description" content="ReCambioGo conecta a personas de todo el mundo para enviar y recibir repuestos de segunda mano y devolver coches a la carretera.">
+
   <title>ReCambioGo — Cada pieza merece otra historia</title>
+  <link rel="icon" type="image/png" href="./recambiogo.png">
+  <link rel="apple-touch-icon" href="./recambiogo.png">
 
   <style>
     :root {
@@ -40,39 +43,55 @@
       font: inherit;
     }
 
+    img {
+      max-width: 100%;
+    }
+
+    .wrap {
+      max-width: 1440px;
+      margin: auto;
+      padding: 0 6%;
+    }
+
     header {
-      height: 88px;
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 20px;
       max-width: 1440px;
-      padding: 0 6%;
+      min-height: 94px;
       margin: auto;
+      padding: 14px 6%;
       border-bottom: 1px solid #dfded9;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       font-size: 25px;
       font-weight: 900;
-      letter-spacing: -1.5px;
+      letter-spacing: -1.3px;
     }
 
     .brand span {
       color: var(--orange);
     }
 
-    .brand svg {
-      width: 30px;
-      height: 30px;
+    .brand-logo {
+      display: block;
+      width: 58px;
+      height: 58px;
+      flex-shrink: 0;
+      object-fit: contain;
+      border-radius: 12px;
     }
 
     nav {
       display: flex;
       align-items: center;
-      gap: 30px;
+      gap: 28px;
       font-size: 13px;
       font-weight: 600;
     }
@@ -81,9 +100,9 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 20px;
+      gap: 16px;
       padding: 16px 23px;
-      border-radius: 4px;
+      border-radius: 5px;
       background: var(--black);
       color: white;
       font-size: 13px;
@@ -106,25 +125,19 @@
 
     .menu {
       display: none;
-      padding: 8px 12px;
+      padding: 9px 12px;
       border: 1px solid #ddd;
-      border-radius: 4px;
+      border-radius: 5px;
       background: transparent;
       cursor: pointer;
     }
 
-    .wrap {
-      max-width: 1440px;
-      margin: auto;
-      padding: 0 6%;
-    }
-
     .hero {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.1fr 1fr;
       align-items: center;
-      gap: 30px;
-      padding: 76px 0 68px;
+      gap: 55px;
+      padding: 70px 0 55px;
     }
 
     .eyebrow {
@@ -132,45 +145,46 @@
       align-items: center;
       gap: 10px;
       font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
       font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
 
     .dot {
-      display: inline-block;
       width: 7px;
       height: 7px;
+      flex-shrink: 0;
       border-radius: 50%;
       background: var(--orange);
-      flex-shrink: 0;
     }
 
     h1 {
       margin: 26px 0;
-      font-size: clamp(48px, 5.5vw, 80px);
-      line-height: .99;
-      letter-spacing: -4px;
+      font-size: clamp(48px, 5.2vw, 76px);
+      line-height: 1.02;
+      letter-spacing: -3.5px;
     }
 
-    h1 em {
+    h1 em,
+    h2 em {
       color: var(--orange);
       font-style: normal;
     }
 
     p {
-      font-size: 16px;
-      line-height: 1.7;
       color: var(--gray);
+      font-size: 16px;
+      line-height: 1.75;
     }
 
     .hero p {
-      max-width: 440px;
+      max-width: 470px;
     }
 
     .actions {
       display: flex;
       align-items: center;
+      flex-wrap: wrap;
       gap: 24px;
       margin: 30px 0;
     }
@@ -186,110 +200,98 @@
       display: flex;
       align-items: center;
       gap: 9px;
-      font-size: 11px;
       color: #777;
+      font-size: 11px;
     }
 
-    .hero-art {
+    .logo-showcase {
       position: relative;
       display: flex;
       align-items: center;
-      min-height: 440px;
+      justify-content: center;
+      min-height: 400px;
+      padding: 40px;
       overflow: hidden;
-      background: #edece7;
-      border-radius: 7px;
+      border: 1px solid #e2dfd8;
+      border-radius: 18px;
+      background: #eeece7;
     }
 
-    .hero-art::before {
+    .logo-showcase::before {
       content: "";
       position: absolute;
-      right: 7%;
-      top: 35px;
       width: 310px;
       height: 310px;
       border-radius: 50%;
       background: var(--orange);
+      opacity: .12;
     }
 
-    .hero-art svg {
+    .logo-showcase img {
       position: relative;
-      width: 110%;
-      margin-left: -5%;
-      z-index: 1;
-    }
-
-    .part-tag {
-      position: absolute;
-      top: 24px;
-      left: 22px;
-      z-index: 2;
-      padding: 14px 16px;
-      border-radius: 4px;
-      background: white;
-      font-size: 11px;
-      box-shadow: 0 5px 22px #00000008;
-    }
-
-    .part-tag b {
       display: block;
-      margin-bottom: 5px;
-      font-size: 12px;
+      width: 320px;
+      max-width: 100%;
+      height: auto;
+      border-radius: 24px;
+      filter: drop-shadow(0 18px 24px #00000018);
     }
 
-    .art-caption {
-      position: absolute;
-      bottom: 24px;
-      left: 25px;
-      right: 25px;
-      z-index: 2;
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-      font-size: 10px;
-      letter-spacing: 1.4px;
+    .banner {
+      margin: 0 0 40px;
+      overflow: hidden;
+      border-radius: 12px;
+      background: var(--black);
+    }
+
+    .banner img {
+      display: block;
+      width: 100%;
+      height: auto;
     }
 
     .ticker {
       display: flex;
       justify-content: space-between;
-      gap: 20px;
+      flex-wrap: wrap;
+      gap: 22px;
       padding: 24px 0;
       border-top: 1px solid #dcdad4;
       border-bottom: 1px solid #dcdad4;
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 1.3px;
+      letter-spacing: 1px;
       text-transform: uppercase;
     }
 
     .ticker span::before {
       content: "↗";
-      margin-right: 10px;
+      margin-right: 9px;
       color: var(--orange);
       font-size: 18px;
     }
 
     .section {
-      padding: 95px 0;
+      padding: 85px 0;
     }
 
     .section-top {
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
-      gap: 60px;
-      margin-bottom: 43px;
+      gap: 50px;
+      margin-bottom: 42px;
     }
 
     h2 {
       margin: 18px 0 0;
       font-size: clamp(32px, 3.5vw, 48px);
-      line-height: 1.08;
-      letter-spacing: -2px;
+      line-height: 1.1;
+      letter-spacing: -1.8px;
     }
 
     .section-top p {
-      max-width: 385px;
+      max-width: 390px;
       margin: 0;
     }
 
@@ -311,13 +313,12 @@
     }
 
     .step h3 {
-      margin: 28px 0 12px;
+      margin: 26px 0 12px;
       font-size: 22px;
       letter-spacing: -.5px;
     }
 
     .step p {
-      max-width: 330px;
       font-size: 14px;
     }
 
@@ -326,8 +327,8 @@
       grid-template-columns: 1fr 1fr;
       align-items: center;
       gap: 65px;
-      padding: 75px 6%;
-      border-radius: 8px;
+      padding: 65px 6%;
+      border-radius: 12px;
       background: var(--black);
       color: white;
     }
@@ -336,38 +337,51 @@
       color: #b8b8b5;
     }
 
-    .community h2 {
-      max-width: 440px;
-    }
-
-    .community em {
-      color: var(--orange);
-      font-style: normal;
-    }
-
     .community .text-link {
       color: white;
     }
 
-    .world {
-      position: relative;
+    .connection {
+      padding: 30px;
+      border: 1px solid #414141;
+      border-radius: 10px;
+    }
+
+    .connection-item {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 20px 0;
+    }
+
+    .connection-item + .connection-item {
+      border-top: 1px solid #363636;
+    }
+
+    .connection-symbol {
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 260px;
+      width: 45px;
+      height: 45px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: var(--orange);
+      color: white;
+      font-size: 23px;
+      font-weight: bold;
     }
 
-    .world svg {
-      width: 100%;
+    .connection-item strong {
+      display: block;
+      font-size: 17px;
     }
 
-    .world-label {
-      position: absolute;
-      bottom: 0;
+    .connection-item small {
+      display: block;
+      margin-top: 7px;
       color: #aaa;
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-align: center;
+      line-height: 1.5;
     }
 
     .mission {
@@ -375,11 +389,7 @@
       grid-template-columns: .8fr 1fr;
       align-items: start;
       gap: 80px;
-      padding: 90px 0;
-    }
-
-    .mission h2 {
-      font-size: 46px;
+      padding: 85px 0;
     }
 
     .mission p {
@@ -389,7 +399,6 @@
     .quote {
       padding-left: 22px;
       border-left: 3px solid var(--orange);
-      color: var(--black);
       font-size: 24px;
       line-height: 1.45;
       letter-spacing: -.6px;
@@ -399,7 +408,7 @@
       display: grid;
       grid-template-columns: .7fr 1fr;
       gap: 60px;
-      padding: 65px 0 80px;
+      padding: 60px 0 75px;
       border-top: 1px solid #d9d7d1;
     }
 
@@ -446,8 +455,8 @@
       align-items: center;
       justify-content: space-between;
       gap: 30px;
-      padding: 60px 6%;
-      border-radius: 8px;
+      padding: 55px 6%;
+      border-radius: 12px;
       background: var(--orange);
       color: white;
     }
@@ -471,16 +480,23 @@
       align-items: center;
       justify-content: space-between;
       gap: 25px;
-      padding: 38px 0;
+      padding: 35px 0;
     }
 
     footer .brand {
       font-size: 20px;
     }
 
+    footer .brand-logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 9px;
+    }
+
     footer small {
       color: #777;
       font-size: 11px;
+      line-height: 1.6;
     }
 
     a:focus-visible,
@@ -490,70 +506,31 @@
       outline-offset: 5px;
     }
 
-    @media (min-width: 1440px) {
-      h1 {
-        font-size: 80px;
-      }
-    }
-
-    @media (max-width: 850px) {
-      header {
-        height: 75px;
-      }
-
+    @media (max-width: 950px) {
       nav {
-        gap: 18px;
+        gap: 16px;
+      }
+
+      nav .button {
+        padding: 13px 15px;
       }
 
       .hero {
-        grid-template-columns: 1fr;
-        padding-top: 48px;
-      }
-
-      h1 {
-        max-width: 660px;
-        font-size: 64px;
-      }
-
-      .hero-art {
-        min-height: 400px;
-      }
-
-      .hero-art svg {
-        max-height: 420px;
-      }
-
-      .hero-art::before {
-        right: 20%;
-      }
-
-      .section-top {
-        align-items: flex-start;
         gap: 30px;
       }
 
-      .community {
-        gap: 30px;
+      .logo-showcase {
+        min-height: 330px;
+        padding: 25px;
       }
 
+      .community,
       .mission {
-        gap: 40px;
-      }
-
-      .ticker {
-        flex-wrap: wrap;
-      }
-
-      .closing h2 {
-        font-size: 34px;
+        gap: 35px;
       }
     }
 
-    @media (max-width: 600px) {
-      header {
-        position: relative;
-      }
-
+    @media (max-width: 750px) {
       .menu {
         display: block;
       }
@@ -561,10 +538,10 @@
       nav {
         display: none;
         position: absolute;
-        top: 74px;
+        top: 100%;
         left: 0;
         right: 0;
-        z-index: 8;
+        z-index: 10;
         flex-direction: column;
         padding: 25px;
         background: var(--white);
@@ -575,66 +552,37 @@
         display: flex;
       }
 
-      h1 {
-        font-size: 51px;
-        letter-spacing: -2.8px;
-      }
-
-      .hero {
-        padding-bottom: 40px;
-      }
-
-      .hero-art {
-        min-height: 300px;
-      }
-
-      .hero-art::before {
-        width: 230px;
-        height: 230px;
-        right: 12%;
-        top: 26px;
-      }
-
-      .part-tag {
-        top: 17px;
-        left: 15px;
-        padding: 10px;
-        font-size: 9px;
-      }
-
-      .part-tag b {
-        font-size: 10px;
-      }
-
-      .art-caption {
-        left: 15px;
-        right: 15px;
-        font-size: 8px;
-      }
-
-      .actions {
-        gap: 20px;
-        flex-wrap: wrap;
-      }
-
-      .ticker {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-        font-size: 9px;
-      }
-
-      .section {
-        padding: 60px 0;
-      }
-
-      .section-top,
+      .hero,
       .community,
       .mission,
       .faq {
-        display: grid;
         grid-template-columns: 1fr;
-        gap: 25px;
+      }
+
+      .hero {
+        padding-top: 45px;
+      }
+
+      h1 {
+        font-size: clamp(46px, 8vw, 65px);
+        letter-spacing: -2.5px;
+      }
+
+      .logo-showcase {
+        min-height: 300px;
+      }
+
+      .logo-showcase img {
+        width: 260px;
+      }
+
+      .section-top {
+        display: block;
+      }
+
+      .section-top p {
+        margin-top: 25px;
+        max-width: none;
       }
 
       .steps {
@@ -642,31 +590,17 @@
         gap: 5px;
       }
 
-      .step h3 {
-        margin-top: 18px;
-      }
-
-      .step p {
-        max-width: none;
+      .section,
+      .mission {
+        padding: 60px 0;
       }
 
       .community {
         padding: 40px 8%;
       }
 
-      .world {
-        min-height: 220px;
-      }
-
-      .mission {
-        padding: 60px 0;
-      }
-
-      .mission h2 {
-        font-size: 37px;
-      }
-
       .faq {
+        gap: 25px;
         padding: 45px 0;
       }
 
@@ -675,17 +609,44 @@
         padding: 40px 8%;
       }
 
-      .closing .button {
-        margin-top: 28px;
-      }
-
       .closing h2 {
         font-size: 36px;
+      }
+
+      .closing .button {
+        margin-top: 25px;
       }
 
       footer {
         align-items: flex-start;
         flex-direction: column;
+      }
+    }
+
+    @media (max-width: 450px) {
+      .brand {
+        gap: 8px;
+        font-size: 22px;
+      }
+
+      .brand-logo {
+        width: 46px;
+        height: 46px;
+      }
+
+      .ticker {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        font-size: 9px;
+      }
+
+      .eyebrow {
+        font-size: 9px;
+        letter-spacing: 1.5px;
+      }
+
+      .connection {
+        padding: 20px;
       }
     }
 
@@ -704,14 +665,14 @@
 <body>
   <header>
     <a class="brand" href="#inicio" aria-label="ReCambioGo, inicio">
-      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
-        <path
-          d="M25 11A11 11 0 0 0 6 8L3 13m0 0V5m0 8h8M7 21a11 11 0 0 0 19 3l3-5m0 0v8m0-8h-8"
-          stroke="#ff5b16"
-          stroke-width="3"
-        />
-      </svg>
-      ReCambio<span>Go</span>
+      <img
+        class="brand-logo"
+        src="./recambiogo.png"
+        alt="Logo de ReCambioGo"
+        width="58"
+        height="58"
+      >
+      <div>ReCambio<span>Go</span></div>
     </a>
 
     <button
@@ -744,9 +705,10 @@
         </h1>
 
         <p>
-          Conecta con personas de todo el mundo para enviar y recibir
-          piezas de segunda mano. Eso que ya no usas puede ser justo
-          lo que otro coche necesita para volver a brillar.
+          Conecta con personas de todo el mundo para enviar y
+          recibir piezas de segunda mano. Eso que ya no usas
+          puede ser justo lo que otro coche necesita para
+          volver a brillar.
         </p>
 
         <div class="actions">
@@ -764,146 +726,21 @@
         </div>
       </div>
 
-      <div
-        class="hero-art"
-        role="img"
-        aria-label="Ilustración de un coche clásico blanco restaurado delante de un sol naranja"
-      >
-        <div class="part-tag">
-          <b>Una segunda oportunidad</b>
-          Para esa pieza. Para ese coche.
-        </div>
-
-        <svg viewBox="0 0 660 400" fill="none" aria-hidden="true">
-          <defs>
-            <linearGradient
-              id="paint"
-              x1="300" y1="190"
-              x2="330" y2="310"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stop-color="#fff"/>
-              <stop offset="1" stop-color="#c8c8c3"/>
-            </linearGradient>
-
-            <linearGradient
-              id="glass"
-              x1="270" y1="130"
-              x2="360" y2="220"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stop-color="#3b4245"/>
-              <stop offset="1" stop-color="#161b20"/>
-            </linearGradient>
-          </defs>
-
-          <ellipse
-            cx="337" cy="311" rx="255" ry="22"
-            fill="#000" opacity=".12"
-          />
-
-          <path
-            d="M72 257l21-36 85-20 71-66c17-15 31-19 61-19h82c23 0 36 8 52 23l59 58 72 28c12 5 18 12 21 24l5 30-18 18H87l-20-16 5-24Z"
-            fill="url(#paint)"
-            stroke="#2d2d2b"
-            stroke-width="3"
-          />
-
-          <path
-            d="m211 195 56-55c8-7 18-10 30-10h17v65H211Z"
-            fill="url(#glass)"
-            stroke="#202526"
-            stroke-width="4"
-          />
-
-          <path
-            d="M330 131h56c17 0 29 7 40 18l42 46H330v-64Z"
-            fill="url(#glass)"
-            stroke="#202526"
-            stroke-width="4"
-          />
-
-          <path
-            d="M337 139h40l40 45"
-            stroke="#fff"
-            stroke-opacity=".22"
-            stroke-width="4"
-          />
-
-          <path
-            d="M314 205v76M470 205l12 45M184 209l-6 32M91 235h479"
-            stroke="#8c8d86"
-            stroke-width="2"
-          />
-
-          <path d="M79 263h515" stroke="#333" stroke-width="7"/>
-
-          <path
-            d="m83 239 23-6v23H78l5-17Z"
-            fill="#ffebb8"
-            stroke="#45443d"
-            stroke-width="2"
-          />
-
-          <path
-            d="M576 238h-18v19h25"
-            fill="#e24521"
-            stroke="#45443d"
-            stroke-width="2"
-          />
-
-          <path
-            d="M77 276h516v12H77z"
-            fill="#a9aaa6"
-            stroke="#333"
-            stroke-width="2"
-          />
-
-          <path
-            d="M237 212h27m98 0h26"
-            stroke="#393b38"
-            stroke-width="5"
-            stroke-linecap="round"
-          />
-
-          <path
-            d="M97 288a59 59 0 0 1 118 0m228 0a59 59 0 0 1 118 0"
-            fill="#222"
-          />
-
-          <circle cx="156" cy="287" r="43" fill="#191919"/>
-          <circle
-            cx="156" cy="287" r="29"
-            fill="#d9d9d4"
-            stroke="#777"
-            stroke-width="4"
-          />
-
-          <circle cx="502" cy="287" r="43" fill="#191919"/>
-          <circle
-            cx="502" cy="287" r="29"
-            fill="#d9d9d4"
-            stroke="#777"
-            stroke-width="4"
-          />
-
-          <g stroke="#555" stroke-width="7">
-            <path d="M156 263v48m-24-24h48m322-24v48m-24-24h48"/>
-          </g>
-
-          <circle cx="156" cy="287" r="9" fill="#272727"/>
-          <circle cx="502" cy="287" r="9" fill="#272727"/>
-
-          <path d="M192 200h32v11h-32z" fill="#333"/>
-          <path d="M211 201v-15" stroke="#333" stroke-width="4"/>
-        </svg>
-
-        <div class="art-caption">
-          <span>EL FUTURO TAMBIÉN SE RESTAURA.</span>
-          <span>RECAMBIOGO / 01</span>
-        </div>
+      <div class="logo-showcase">
+        <img
+          src="./recambiogo.png"
+          alt="ReCambioGo: una segunda vida para tus repuestos"
+          fetchpriority="high"
+        >
       </div>
     </section>
+
+    <div class="banner">
+      <img
+        src="./barnet_web_recambios.png"
+        alt="Banner de ReCambioGo"
+      >
+    </div>
 
     <div class="ticker">
       <span>Repuestos de segunda mano</span>
@@ -923,8 +760,8 @@
         </div>
 
         <p>
-          ReCambioGo nace para acercar a quien tiene una pieza con
-          quien lleva tiempo buscándola. De un garaje a otro,
+          ReCambioGo nace para acercar a quien tiene una pieza
+          con quien lleva tiempo buscándola. De un garaje a otro,
           empieza una nueva historia.
         </p>
       </div>
@@ -934,8 +771,8 @@
           <span class="number">01 / ENCUENTRA</span>
           <h3>Mira en tu garaje.</h3>
           <p>
-            Ese faro, esa llanta o ese retrovisor que guarda polvo
-            todavía puede tener mucho camino por delante.
+            Ese faro, esa llanta o ese retrovisor que guarda
+            polvo todavía puede tener mucho camino por delante.
           </p>
         </article>
 
@@ -973,8 +810,8 @@
         </h2>
 
         <p>
-          En tu ciudad o al otro lado del mundo, hay alguien que
-          puede estar buscando justo lo que tú tienes.
+          En tu ciudad o al otro lado del mundo, hay alguien
+          que puede estar buscando justo lo que tú tienes.
           ReCambioGo quiere que la distancia deje de separar
           piezas e historias.
         </p>
@@ -984,48 +821,35 @@
         </a>
       </div>
 
-      <div class="world">
-        <svg viewBox="0 0 480 285" fill="none" aria-hidden="true">
-          <ellipse
-            cx="240" cy="132" rx="204" ry="104"
-            stroke="#494949"
-          />
-          <ellipse
-            cx="240" cy="132" rx="125" ry="104"
-            stroke="#353535"
-          />
-          <ellipse
-            cx="240" cy="132" rx="55" ry="104"
-            stroke="#353535"
-          />
+      <div class="connection">
+        <div class="connection-item">
+          <span class="connection-symbol" aria-hidden="true">↗</span>
+          <div>
+            <strong>Desde tu garaje</strong>
+            <small>
+              Una pieza olvidada puede iniciar un nuevo viaje.
+            </small>
+          </div>
+        </div>
 
-          <path
-            d="M36 132h408M57 82h366M57 182h366M240 28v208"
-            stroke="#353535"
-          />
+        <div class="connection-item">
+          <span class="connection-symbol" aria-hidden="true">↔</span>
+          <div>
+            <strong>Personas de todo el mundo</strong>
+            <small>
+              Una misma pasión, muchos lugares donde encontrarse.
+            </small>
+          </div>
+        </div>
 
-          <path
-            d="m91 79 37-21 27 8 6 25-21 16-10 27-23-6-12-26-4-23Zm63 67 23 5 18 25-15 38-12 6-12-32-2-42ZM233 84l23-19 25 8 15-7 29 7 20-14 44 22 9 18-29 15-25-1-8 19-25-6-11-21-24 7-19-9-24-19ZM239 112l30 5 17 29-10 39-17 15-18-26-13-32 11-30ZM364 179l29-7 17 13-4 17-36 4-11-15Z"
-            fill="#6b6b67"
-          />
-
-          <path
-            d="M116 96Q192-18 267 102T390 191M116 96Q157 216 176 177M267 102Q361 85 390 191"
-            stroke="#ff5b16"
-            stroke-width="2"
-            stroke-dasharray="5 5"
-          />
-
-          <g fill="#ff5b16" stroke="#151515" stroke-width="5">
-            <circle cx="116" cy="96" r="8"/>
-            <circle cx="267" cy="102" r="8"/>
-            <circle cx="176" cy="177" r="8"/>
-            <circle cx="390" cy="191" r="8"/>
-          </g>
-        </svg>
-
-        <div class="world-label">
-          DE TU GARAJE A UN NUEVO DESTINO
+        <div class="connection-item">
+          <span class="connection-symbol" aria-hidden="true">✓</span>
+          <div>
+            <strong>Un coche con otra oportunidad</strong>
+            <small>
+              La pieza adecuada puede devolverle su brillo.
+            </small>
+          </div>
         </div>
       </div>
     </section>
@@ -1134,11 +958,19 @@
 
     <footer>
       <a class="brand" href="#inicio">
-        ReCambio<span>Go</span>
+        <img
+          class="brand-logo"
+          src="./recambiogo.png"
+          alt=""
+          width="42"
+          height="42"
+          loading="lazy"
+        >
+        <div>ReCambio<span>Go</span></div>
       </a>
 
       <small>
-        Una segunda vida para tus piezas.
+        Una segunda vida para tus piezas.<br>
         Un nuevo camino para los coches.
       </small>
 
