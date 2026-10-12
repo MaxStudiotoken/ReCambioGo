@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ff5b16">
+  <meta name="description" content="ReCambioGo conecta a personas de todo el mundo para enviar y recibir piezas de segunda mano y devolver coches a la carretera.">
+  <title>ReCambioGo — Cada pieza merece otra historia</title>
+
+  <style>
+    :root {
+      --orange: #ff5b16;
+      --black: #151515;
+      --white: #faf9f6;
+      --gray: #686762;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--white);
+      color: var(--black);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    header {
+      height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1440px;
+      padding: 0 6%;
+      margin: auto;
+      border-bottom: 1px solid #dfded9;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 25px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+    }
+
+    .brand span {
+      color: var(--orange);
+    }
+
+    .brand svg {
+      width: 30px;
+      height: 30px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 16px 23px;
+      border-radius: 4px;
+      background: var(--black);
+      color: white;
+      font-size: 13px;
+      font-weight: 700;
+      transition: transform .2s, background .2s;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      background: #333;
+    }
+
+    .button.orange {
+      background: var(--orange);
+    }
+
+    .button.orange:hover {
+      background: #e74809;
+    }
+
+    .menu {
+      display: none;
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .wrap {
+      max-width: 1440px;
+      margin: auto;
+      padding: 0 6%;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 30px;
+      padding: 76px 0 68px;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 700;
+    }
+
+    .dot {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--orange);
+      flex-shrink: 0;
+    }
+
+    h1 {
+      margin: 26px 0;
+      font-size: clamp(48px, 5.5vw, 80px);
+      line-height: .99;
+      letter-spacing: -4px;
+    }
+
+    h1 em {
+      color: var(--orange);
+      font-style: normal;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--gray);
+    }
+
+    .hero p {
+      max-width: 440px;
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin: 30px 0;
+    }
+
+    .text-link {
+      display: inline-block;
+      padding: 10px 0;
+      border-bottom: 1px solid currentColor;
+      font-size: 13px;
+    }
+
+    .hero-note {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 11px;
+      color: #777;
+    }
+
+    .hero-art {
+      position: relative;
+      display: flex;
+      align-items: center;
+      min-height: 440px;
+      overflow: hidden;
+      background: #edece7;
+      border-radius: 7px;
+    }
+
+    .hero-art::before {
+      content: "";
+      position: absolute;
+      right: 7%;
+      top: 35px;
+      width: 310px;
+      height: 310px;
+      border-radius: 50%;
+      background: var(--orange);
+    }
+
+    .hero-art svg {
+      position: relative;
+      width: 110%;
+      margin-left: -5%;
+      z-index: 1;
+    }
+
+    .part-tag {
+      position: absolute;
+      top: 24px;
+      left: 22px;
+      z-index: 2;
+      padding: 14px 16px;
+      border-radius: 4px;
+      background: white;
+      font-size: 11px;
+      box-shadow: 0 5px 22px #00000008;
+    }
+
+    .part-tag b {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 12px;
+    }
+
+    .art-caption {
+      position: absolute;
+      bottom: 24px;
+      left: 25px;
+      right: 25px;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      font-size: 10px;
+      letter-spacing: 1.4px;
+    }
+
+    .ticker {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 24px 0;
+      border-top: 1px solid #dcdad4;
+      border-bottom: 1px solid #dcdad4;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+    }
+
+    .ticker span::before {
+      content: "↗";
+      margin-right: 10px;
+      color: var(--orange);
+      font-size: 18px;
+    }
+
+    .section {
+      padding: 95px 0;
+    }
+
+    .section-top {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 60px;
+      margin-bottom: 43px;
+    }
+
+    h2 {
+      margin: 18px 0 0;
+      font-size: clamp(32px, 3.5vw, 48px);
+      line-height: 1.08;
+      letter-spacing: -2px;
+    }
+
+    .section-top p {
+      max-width: 385px;
+      margin: 0;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .step {
+      padding: 26px 0;
+      border-top: 1px solid #ccc;
+    }
+
+    .number {
+      color: var(--orange);
+      font-family: monospace;
+      font-size: 15px;
+    }
+
+    .step h3 {
+      margin: 28px 0 12px;
+      font-size: 22px;
+      letter-spacing: -.5px;
+    }
+
+    .step p {
+      max-width: 330px;
+      font-size: 14px;
+    }
+
+    .community {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 65px;
+      padding: 75px 6%;
+      border-radius: 8px;
+      background: var(--black);
+      color: white;
+    }
+
+    .community p {
+      color: #b8b8b5;
+    }
+
+    .community h2 {
+      max-width: 440px;
+    }
+
+    .community em {
+      color: var(--orange);
+      font-style: normal;
+    }
+
+    .community .text-link {
+      color: white;
+    }
+
+    .world {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 260px;
+    }
+
+    .world svg {
+      width: 100%;
+    }
+
+    .world-label {
+      position: absolute;
+      bottom: 0;
+      color: #aaa;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-align: center;
+    }
+
+    .mission {
+      display: grid;
+      grid-template-columns: .8fr 1fr;
+      align-items: start;
+      gap: 80px;
+      padding: 90px 0;
+    }
+
+    .mission h2 {
+      font-size: 46px;
+    }
+
+    .mission p {
+      margin: 0 0 22px;
+    }
+
+    .quote {
+      padding-left: 22px;
+      border-left: 3px solid var(--orange);
+      color: var(--black);
+      font-size: 24px;
+      line-height: 1.45;
+      letter-spacing: -.6px;
+    }
+
+    .faq {
+      display: grid;
+      grid-template-columns: .7fr 1fr;
+      gap: 60px;
+      padding: 65px 0 80px;
+      border-top: 1px solid #d9d7d1;
+    }
+
+    .faq h2 {
+      font-size: 35px;
+    }
+
+    details {
+      padding: 20px 0;
+      border-bottom: 1px solid #d9d7d1;
+    }
+
+    summary {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      font-size: 15px;
+      font-weight: 600;
+      list-style: none;
+      cursor: pointer;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "+";
+      color: var(--orange);
+      font-size: 21px;
+    }
+
+    details[open] summary::after {
+      content: "−";
+    }
+
+    details p {
+      margin-bottom: 3px;
+      font-size: 14px;
+    }
+
+    .closing {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      padding: 60px 6%;
+      border-radius: 8px;
+      background: var(--orange);
+      color: white;
+    }
+
+    .closing h2 {
+      margin: 0;
+      font-size: 44px;
+    }
+
+    .closing p {
+      margin-bottom: 0;
+      color: white;
+    }
+
+    .closing .button {
+      white-space: nowrap;
+    }
+
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      padding: 38px 0;
+    }
+
+    footer .brand {
+      font-size: 20px;
+    }
+
+    footer small {
+      color: #777;
+      font-size: 11px;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    summary:focus-visible {
+      outline: 3px solid var(--orange);
+      outline-offset: 5px;
+    }
+
+    @media (min-width: 1440px) {
+      h1 {
+        font-size: 80px;
+      }
+    }
+
+    @media (max-width: 850px) {
+      header {
+        height: 75px;
+      }
+
+      nav {
+        gap: 18px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 48px;
+      }
+
+      h1 {
+        max-width: 660px;
+        font-size: 64px;
+      }
+
+      .hero-art {
+        min-height: 400px;
+      }
+
+      .hero-art svg {
+        max-height: 420px;
+      }
+
+      .hero-art::before {
+        right: 20%;
+      }
+
+      .section-top {
+        align-items: flex-start;
+        gap: 30px;
+      }
+
+      .community {
+        gap: 30px;
+      }
+
+      .mission {
+        gap: 40px;
+      }
+
+      .ticker {
+        flex-wrap: wrap;
+      }
+
+      .closing h2 {
+        font-size: 34px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      header {
+        position: relative;
+      }
+
+      .menu {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 74px;
+        left: 0;
+        right: 0;
+        z-index: 8;
+        flex-direction: column;
+        padding: 25px;
+        background: var(--white);
+        box-shadow: 0 15px 20px #00000011;
+      }
+
+      nav.open {
+        display: flex;
+      }
+
+      h1 {
+        font-size: 51px;
+        letter-spacing: -2.8px;
+      }
+
+      .hero {
+        padding-bottom: 40px;
+      }
+
+      .hero-art {
+        min-height: 300px;
+      }
+
+      .hero-art::before {
+        width: 230px;
+        height: 230px;
+        right: 12%;
+        top: 26px;
+      }
+
+      .part-tag {
+        top: 17px;
+        left: 15px;
+        padding: 10px;
+        font-size: 9px;
+      }
+
+      .part-tag b {
+        font-size: 10px;
+      }
+
+      .art-caption {
+        left: 15px;
+        right: 15px;
+        font-size: 8px;
+      }
+
+      .actions {
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .ticker {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        font-size: 9px;
+      }
+
+      .section {
+        padding: 60px 0;
+      }
+
+      .section-top,
+      .community,
+      .mission,
+      .faq {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+        gap: 5px;
+      }
+
+      .step h3 {
+        margin-top: 18px;
+      }
+
+      .step p {
+        max-width: none;
+      }
+
+      .community {
+        padding: 40px 8%;
+      }
+
+      .world {
+        min-height: 220px;
+      }
+
+      .mission {
+        padding: 60px 0;
+      }
+
+      .mission h2 {
+        font-size: 37px;
+      }
+
+      .faq {
+        padding: 45px 0;
+      }
+
+      .closing {
+        display: block;
+        padding: 40px 8%;
+      }
+
+      .closing .button {
+        margin-top: 28px;
+      }
+
+      .closing h2 {
+        font-size: 36px;
+      }
+
+      footer {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .button {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a class="brand" href="#inicio" aria-label="ReCambioGo, inicio">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path
+          d="M25 11A11 11 0 0 0 6 8L3 13m0 0V5m0 8h8M7 21a11 11 0 0 0 19 3l3-5m0 0v8m0-8h-8"
+          stroke="#ff5b16"
+          stroke-width="3"
+        />
+      </svg>
+      ReCambio<span>Go</span>
+    </a>
+
+    <button
+      class="menu"
+      aria-controls="nav"
+      aria-expanded="false"
+      aria-label="Abrir menú"
+    >☰</button>
+
+    <nav id="nav">
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#comunidad">Sin fronteras</a>
+      <a href="#idea">Nuestra idea</a>
+      <a class="button" href="#descubre">Conoce ReCambioGo ↗</a>
+    </nav>
+  </header>
+
+  <main class="wrap" id="inicio">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">
+          <span class="dot"></span>
+          Segundas piezas. Nuevas historias.
+        </div>
+
+        <h1>
+          Del polvo<br>
+          de tu garaje.<br>
+          <em>Al brillo de<br>la carretera.</em>
+        </h1>
+
+        <p>
+          Conecta con personas de todo el mundo para enviar y recibir
+          piezas de segunda mano. Eso que ya no usas puede ser justo
+          lo que otro coche necesita para volver a brillar.
+        </p>
+
+        <div class="actions">
+          <a class="button orange" href="#como-funciona">
+            Descubre cómo ↗
+          </a>
+          <a class="text-link" href="#idea">
+            La idea detrás de la app
+          </a>
+        </div>
+
+        <div class="hero-note">
+          <span class="dot"></span>
+          Una pieza guardada. Un coche esperando.
+        </div>
+      </div>
+
+      <div
+        class="hero-art"
+        role="img"
+        aria-label="Ilustración de un coche clásico blanco restaurado delante de un sol naranja"
+      >
+        <div class="part-tag">
+          <b>Una segunda oportunidad</b>
+          Para esa pieza. Para ese coche.
+        </div>
+
+        <svg viewBox="0 0 660 400" fill="none" aria-hidden="true">
+          <defs>
+            <linearGradient
+              id="paint"
+              x1="300" y1="190"
+              x2="330" y2="310"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop stop-color="#fff"/>
+              <stop offset="1" stop-color="#c8c8c3"/>
+            </linearGradient>
+
+            <linearGradient
+              id="glass"
+              x1="270" y1="130"
+              x2="360" y2="220"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop stop-color="#3b4245"/>
+              <stop offset="1" stop-color="#161b20"/>
+            </linearGradient>
+          </defs>
+
+          <ellipse
+            cx="337" cy="311" rx="255" ry="22"
+            fill="#000" opacity=".12"
+          />
+
+          <path
+            d="M72 257l21-36 85-20 71-66c17-15 31-19 61-19h82c23 0 36 8 52 23l59 58 72 28c12 5 18 12 21 24l5 30-18 18H87l-20-16 5-24Z"
+            fill="url(#paint)"
+            stroke="#2d2d2b"
+            stroke-width="3"
+          />
+
+          <path
+            d="m211 195 56-55c8-7 18-10 30-10h17v65H211Z"
+            fill="url(#glass)"
+            stroke="#202526"
+            stroke-width="4"
+          />
+
+          <path
+            d="M330 131h56c17 0 29 7 40 18l42 46H330v-64Z"
+            fill="url(#glass)"
+            stroke="#202526"
+            stroke-width="4"
+          />
+
+          <path
+            d="M337 139h40l40 45"
+            stroke="#fff"
+            stroke-opacity=".22"
+            stroke-width="4"
+          />
+
+          <path
+            d="M314 205v76M470 205l12 45M184 209l-6 32M91 235h479"
+            stroke="#8c8d86"
+            stroke-width="2"
+          />
+
+          <path d="M79 263h515" stroke="#333" stroke-width="7"/>
+
+          <path
+            d="m83 239 23-6v23H78l5-17Z"
+            fill="#ffebb8"
+            stroke="#45443d"
+            stroke-width="2"
+          />
+
+          <path
+            d="M576 238h-18v19h25"
+            fill="#e24521"
+            stroke="#45443d"
+            stroke-width="2"
+          />
+
+          <path
+            d="M77 276h516v12H77z"
+            fill="#a9aaa6"
+            stroke="#333"
+            stroke-width="2"
+          />
+
+          <path
+            d="M237 212h27m98 0h26"
+            stroke="#393b38"
+            stroke-width="5"
+            stroke-linecap="round"
+          />
+
+          <path
+            d="M97 288a59 59 0 0 1 118 0m228 0a59 59 0 0 1 118 0"
+            fill="#222"
+          />
+
+          <circle cx="156" cy="287" r="43" fill="#191919"/>
+          <circle
+            cx="156" cy="287" r="29"
+            fill="#d9d9d4"
+            stroke="#777"
+            stroke-width="4"
+          />
+
+          <circle cx="502" cy="287" r="43" fill="#191919"/>
+          <circle
+            cx="502" cy="287" r="29"
+            fill="#d9d9d4"
+            stroke="#777"
+            stroke-width="4"
+          />
+
+          <g stroke="#555" stroke-width="7">
+            <path d="M156 263v48m-24-24h48m322-24v48m-24-24h48"/>
+          </g>
+
+          <circle cx="156" cy="287" r="9" fill="#272727"/>
+          <circle cx="502" cy="287" r="9" fill="#272727"/>
+
+          <path d="M192 200h32v11h-32z" fill="#333"/>
+          <path d="M211 201v-15" stroke="#333" stroke-width="4"/>
+        </svg>
+
+        <div class="art-caption">
+          <span>EL FUTURO TAMBIÉN SE RESTAURA.</span>
+          <span>RECAMBIOGO / 01</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="ticker">
+      <span>Repuestos de segunda mano</span>
+      <span>Personas conectadas</span>
+      <span>Envíos y encuentros</span>
+      <span>Pasión por los coches</span>
+    </div>
+
+    <section class="section" id="como-funciona">
+      <div class="section-top">
+        <div>
+          <div class="eyebrow">
+            <span class="dot"></span>
+            La idea es sencilla
+          </div>
+          <h2>Lo que a ti te sobra,<br>a alguien le falta.</h2>
+        </div>
+
+        <p>
+          ReCambioGo nace para acercar a quien tiene una pieza con
+          quien lleva tiempo buscándola. De un garaje a otro,
+          empieza una nueva historia.
+        </p>
+      </div>
+
+      <div class="steps">
+        <article class="step">
+          <span class="number">01 / ENCUENTRA</span>
+          <h3>Mira en tu garaje.</h3>
+          <p>
+            Ese faro, esa llanta o ese retrovisor que guarda polvo
+            todavía puede tener mucho camino por delante.
+          </p>
+        </article>
+
+        <article class="step">
+          <span class="number">02 / CONECTA</span>
+          <h3>Habla con quien la necesita.</h3>
+          <p>
+            La app está pensada para poner en contacto a personas
+            y compartir los detalles de cada pieza: modelo,
+            estado y compatibilidad.
+          </p>
+        </article>
+
+        <article class="step">
+          <span class="number">03 / DALE VIDA</span>
+          <h3>Haz que vuelva a rodar.</h3>
+          <p>
+            Acordad cómo enviar o recibir la pieza. Lo que estaba
+            olvidado puede ayudar a devolver un coche a la carretera.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="community" id="comunidad">
+      <div>
+        <div class="eyebrow">
+          <span class="dot"></span>
+          Una pasión que nos conecta
+        </div>
+
+        <h2>
+          La pieza puede estar lejos.<br>
+          <em>La conexión, muy cerca.</em>
+        </h2>
+
+        <p>
+          En tu ciudad o al otro lado del mundo, hay alguien que
+          puede estar buscando justo lo que tú tienes.
+          ReCambioGo quiere que la distancia deje de separar
+          piezas e historias.
+        </p>
+
+        <a class="text-link" href="#descubre">
+          Descubre nuestra visión ↗
+        </a>
+      </div>
+
+      <div class="world">
+        <svg viewBox="0 0 480 285" fill="none" aria-hidden="true">
+          <ellipse
+            cx="240" cy="132" rx="204" ry="104"
+            stroke="#494949"
+          />
+          <ellipse
+            cx="240" cy="132" rx="125" ry="104"
+            stroke="#353535"
+          />
+          <ellipse
+            cx="240" cy="132" rx="55" ry="104"
+            stroke="#353535"
+          />
+
+          <path
+            d="M36 132h408M57 82h366M57 182h366M240 28v208"
+            stroke="#353535"
+          />
+
+          <path
+            d="m91 79 37-21 27 8 6 25-21 16-10 27-23-6-12-26-4-23Zm63 67 23 5 18 25-15 38-12 6-12-32-2-42ZM233 84l23-19 25 8 15-7 29 7 20-14 44 22 9 18-29 15-25-1-8 19-25-6-11-21-24 7-19-9-24-19ZM239 112l30 5 17 29-10 39-17 15-18-26-13-32 11-30ZM364 179l29-7 17 13-4 17-36 4-11-15Z"
+            fill="#6b6b67"
+          />
+
+          <path
+            d="M116 96Q192-18 267 102T390 191M116 96Q157 216 176 177M267 102Q361 85 390 191"
+            stroke="#ff5b16"
+            stroke-width="2"
+            stroke-dasharray="5 5"
+          />
+
+          <g fill="#ff5b16" stroke="#151515" stroke-width="5">
+            <circle cx="116" cy="96" r="8"/>
+            <circle cx="267" cy="102" r="8"/>
+            <circle cx="176" cy="177" r="8"/>
+            <circle cx="390" cy="191" r="8"/>
+          </g>
+        </svg>
+
+        <div class="world-label">
+          DE TU GARAJE A UN NUEVO DESTINO
+        </div>
+      </div>
+    </section>
+
+    <section class="mission" id="idea">
+      <div>
+        <div class="eyebrow">
+          <span class="dot"></span>
+          Por qué ReCambioGo
+        </div>
+
+        <h2>
+          Hay coches que<br>
+          merecen volver<br>
+          a brillar.
+        </h2>
+      </div>
+
+      <div>
+        <p>
+          No todas las maravillas están en un museo. Algunas
+          esperan en un taller, bajo una lona o en el garaje
+          de alguien que se resiste a dejarlas atrás.
+        </p>
+
+        <p>
+          Y a veces, lo único que les falta es una pieza que
+          otra persona tiene olvidada. Queremos conectar esas
+          dos historias: aprovechar lo que ya existe, compartir
+          nuestra pasión y dar una segunda oportunidad a los
+          coches que aún tienen mucho que contar.
+        </p>
+
+        <div class="quote">
+          Tu garaje guarda la próxima historia de alguien.
+        </div>
+      </div>
+    </section>
+
+    <section class="faq">
+      <div>
+        <div class="eyebrow">
+          <span class="dot"></span>
+          Antes de empezar
+        </div>
+
+        <h2>
+          Una buena pieza.<br>
+          Una buena conversación.
+        </h2>
+      </div>
+
+      <div>
+        <details>
+          <summary>¿Qué es ReCambioGo?</summary>
+          <p>
+            Es una app para conectar a personas que tienen
+            repuestos de segunda mano con otras que los necesitan.
+            Su idea es facilitar la comunicación para enviar
+            y recibir piezas, y ayudar a que más coches vuelvan
+            a la carretera.
+          </p>
+        </details>
+
+        <details>
+          <summary>¿Qué piezas encajan con esta idea?</summary>
+          <p>
+            Faros, llantas, retrovisores, elementos de interior
+            y otros repuestos que aún puedan reutilizarse.
+            Describe siempre su estado real y cualquier desperfecto.
+          </p>
+        </details>
+
+        <details>
+          <summary>¿Qué comprobar antes de acordar un envío?</summary>
+          <p>
+            La referencia de la pieza, el modelo y año del coche,
+            su estado y sus medidas cuando sean relevantes.
+            Acordad también el embalaje, el destino y el coste
+            del envío.
+          </p>
+        </details>
+
+        <details>
+          <summary>¿Dónde puedo descargar la app?</summary>
+          <p>
+            Esta web presenta ReCambioGo. El enlace oficial de
+            descarga se añadirá aquí cuando esté disponible.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <section class="closing" id="descubre">
+      <div>
+        <h2>Cada pieza merece<br>otra historia.</h2>
+        <p>
+          ReCambioGo. Conectamos garajes, personas y pasión.
+        </p>
+      </div>
+
+      <a class="button" href="#como-funciona">
+        Explora la idea ↗
+      </a>
+    </section>
+
+    <footer>
+      <a class="brand" href="#inicio">
+        ReCambio<span>Go</span>
+      </a>
+
+      <small>
+        Una segunda vida para tus piezas.
+        Un nuevo camino para los coches.
+      </small>
+
+      <a class="text-link" href="#inicio">
+        Volver arriba ↑
+      </a>
+    </footer>
+  </main>
+
+  <script>
+    const menu = document.querySelector(".menu");
+    const nav = document.querySelector("#nav");
+
+    menu.addEventListener("click", () => {
+      const open = nav.classList.toggle("open");
+
+      menu.setAttribute("aria-expanded", String(open));
+      menu.setAttribute(
+        "aria-label",
+        open ? "Cerrar menú" : "Abrir menú"
+      );
+    });
+
+    nav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        nav.classList.remove("open");
+        menu.setAttribute("aria-expanded", "false");
+        menu.setAttribute("aria-label", "Abrir menú");
+      });
+    });
+  </script>
+</body>
+</html>
